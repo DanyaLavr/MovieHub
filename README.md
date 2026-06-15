@@ -1,12 +1,59 @@
-# React + Vite
+# 🎬 MovieHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Everything you need to know about a movie — in one place.
 
-Currently, two official plugins are available:
+Not sure what to watch tonight? Or already picked a film and want to know who's in it and what people think? **MovieHub** is a clean, focused app for discovering and exploring movies, built on top of The Movie Database API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- 🔥 **Home page** — what's popular right now
+- 🔍 **Search** — find any movie by title
+- 🎭 **Movie page** — poster, overview, rating
+- 👥 **Cast** — who plays who
+- 💬 **Reviews** — what audiences are saying
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+- **React** — SPA with lazy-loaded pages (`React.lazy + Suspense`)
+- **React Router** — nested routes for movie details
+- **Axios** — requests to the [TMDB API](https://www.themoviedb.org/)
+- **Styled Components + Tailwind CSS** — styling
+- **Vite** — build tool
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+The app uses a public TMDB API key — no extra setup needed.
+
+## Project structure
+
+```
+src/
+├── api/
+│   └── fetch-movies.js   # all TMDB requests in one place
+├── components/
+│   ├── cast/             # actor list
+│   ├── finder/           # search bar
+│   ├── header/           # navigation
+│   ├── loader/           # loading spinner
+│   ├── movie/            # movie card
+│   └── reviews/          # user reviews
+└── pages/
+    ├── home/             # trending movies
+    ├── movies/           # search results
+    └── movie-details/    # single movie page
+```
+
+## Routes
+
+| Path | Page |
+|------|------|
+| `/` | Home — popular movies |
+| `/movies` | Search results |
+| `/movies/:id` | Movie details |
+| `/movies/:id/cast` | Cast |
+| `/movies/:id/reviews` | Reviews |
